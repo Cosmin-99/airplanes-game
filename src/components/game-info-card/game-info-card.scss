@@ -1,0 +1,11 @@
+.game-info {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 4px;
+    
+    > p > span {
+        font-weight: bold;
+    }
+}

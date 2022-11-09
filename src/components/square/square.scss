@@ -1,0 +1,13 @@
+.square-wrapper {
+    width: 60px;
+    height: 50px;
+    background-color: aquamarine;
+    border: solid black 2px;
+    box-sizing: border-box;
+
+    .square-value {
+        display: flex;
+        justify-content: center;
+        padding: 12px 0px;
+    }
+}
