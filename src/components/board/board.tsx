@@ -20,7 +20,7 @@ export function Board() {
     const [hours, minutes, seconds] = useCountdown(gameTime.begin, gameTime.end)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const data = useMemo(() => getRandomData(5), [startGame])
-    const gameHistory = useMemo(() => games!.sort((a, b) => b.shots - a.shots), [games]);
+    const gameHistory = useMemo(() => games.sort((a, b) => b.shots - a.shots), [games]);
 
     const handlePlayAgain = () => {
         setStartGame(false)
@@ -52,9 +52,9 @@ export function Board() {
             <h2>Airplanes battlefield</h2>
             <div className="board">
                 <div className="left-side">
-                    {winGame ? <h1> Game Over. You WIN !!!</h1> : <></>}
-                    {winGame ? <h4>Strikes: {strikes}</h4> : <></>}
-                    {startGame ? data.map((row, index) => (
+                    {winGame && <h1> Game Over. You WIN !!!</h1>}
+                    {winGame && <h4>Strikes: {strikes}</h4>}
+                    {startGame && data.map((row, index) => (
                         <div className="board-row" key={`${id}-r${index}`}>
                             {row.map((el, elementIndex) =>
                                 <Square
@@ -64,9 +64,9 @@ export function Board() {
                                     countStrike={() => setStrikes(strikes + 1)} />)
                             }
                         </div>
-                    )) : <></>}
-                    {!startGame ? <button className="button" onClick={handleStartGame}>Start Game</button> : <></>}
-                    {winGame ? <button className="button" onClick={handlePlayAgain}>Play Again</button> : <></>}
+                    ))}
+                    {!startGame && <button className="button" onClick={handleStartGame}>Start Game</button>}
+                    {winGame && <button className="button" onClick={handlePlayAgain}>Play Again</button>}
                 </div>
                 {gameHistory.length ? <div className="right-side">
                     <h3>Game History</h3>
