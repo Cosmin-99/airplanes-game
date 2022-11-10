@@ -3,20 +3,23 @@ import "./square.scss";
 
 export function Square(props: {
     value: number
+    disabled: boolean
     countStrike: () => void
     winGame: () => void
 }) {
     const [reveal, setReveal] = useState(false)
-    const { value, countStrike, winGame } = props;
+    const { value, countStrike, winGame, disabled } = props;
 
 
     return (
         <div className="square-wrapper" onClick={() => {
-            if (value) {
-                winGame()
+            if (!disabled) {
+                if (value) {
+                    winGame()
+                }
+                setReveal(true)
+                countStrike()
             }
-            setReveal(true)
-            countStrike()
         }}>
             <div className="square-value">{reveal ? (value ? "X" : "0") : ""}</div>
         </div>

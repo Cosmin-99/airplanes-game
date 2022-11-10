@@ -61,7 +61,8 @@ export function Board() {
                                     value={el}
                                     key={`${id}-c${elementIndex}`}
                                     winGame={handleWinGame}
-                                    countStrike={() => setStrikes(strikes + 1)} />)
+                                    countStrike={() => setStrikes(strikes + 1)}
+                                    disabled={winGame} />)
                             }
                         </div>
                     ))}
